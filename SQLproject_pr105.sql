@@ -1,0 +1,52 @@
+DROP TABLE IF EXISTS `USERS`;
+CREATE TABLE `USERS` (
+  `USER_ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `PROFESSOR` VARCHAR(50) NOT NULL,
+  `LOGIN` VARCHAR(50) NOT NULL,
+  `PASSWORD` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`USER_ID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+ 
+DROP TABLE IF EXISTS `REQUESTS`;
+CREATE TABLE `REQUESTS` (
+  `REQUEST_ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `DISCIPLINE` VARCHAR(50) NOT NULL,
+  `GRUPP` INT(10) NOT NULL,
+  `PairsInWeek` INT(10) NOT NULL,
+  `USERID` INT(11) NOT NULL,
+  PRIMARY KEY (`REQUEST_ID`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `UNIVER`;
+CREATE TABLE `UNIVER` (
+  `UNIVER_ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `DAY` VARCHAR(50) NOT NULL,
+  `FREEROOMS` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`UNIVER_ID`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `USERS` (`USER_ID`, `PROFESSOR`, `LOGIN`, `PASSWORD`)
+VALUES
+	(1, 'Professor 1', 'login 1', 'pass1'),
+	(2, 'Professor 2', 'login 2', 'pass2'),
+	(3, 'Professor 3', 'login 3', 'pass3'),
+	(4, 'Professor 4', 'login 4', 'pass4'),
+	(5, 'Professor 5', 'login 5', 'pass5');
+
+INSERT INTO `REQUESTS` (`REQUEST_ID`, `DISCIPLINE`, `GRUPP`,  `PairsInWeek`, `USERID`)
+VALUES
+	(1, 'Discipline 1', 11, 2, 3),
+	(2, 'Discipline 2', 32, 2, 1),
+	(3, 'Discipline 3', 24, 1, 5),
+	(4, 'Discipline 4', 43, 3, 2),
+	(5, 'Discipline 5', 51, 1, 4);
+	
+INSERT INTO `UNIVER` (`UNIVER_ID`, `DAY`, `FREEROOMS`)
+VALUES
+	(1, 'Monday', '307, 104, 206'),
+	(2, 'Tuesday', '505, 309, 601'),
+	(3, 'Wednesday', '215, 414, 101'),
+	(4, 'Thursday', '603, 502, 303'),
+	(5, 'Friday', '108, 202, 404');
+
+commit;
